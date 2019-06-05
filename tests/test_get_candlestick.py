@@ -65,3 +65,8 @@ class TestGetCandlestick(unittest.TestCase):
         self.assertEqual(14514.049885396099061006, candlestick_list[1].amount)
         self.assertEqual(52311364.00432444789296465098, candlestick_list[1].volume)
         self.assertEqual(99003, candlestick_list[1].count)
+def test():
+    a = TestGetCandlestick()
+    a.test_request()
+if __name__=='__main__':
+    test()

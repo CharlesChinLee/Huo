@@ -50,3 +50,11 @@ class TestGetSymbols(unittest.TestCase):
         self.assertEqual(3, symbol_list[1].price_precision)
         self.assertEqual(5, symbol_list[1].amount_precision)
         self.assertEqual("main", symbol_list[1].symbol_partition)
+
+
+def test():
+    a = TestGetSymbols()
+    a.test_request()
+if __name__=='__main__':
+    test()
+

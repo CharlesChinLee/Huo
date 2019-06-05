@@ -119,6 +119,10 @@ class RequestClient(object):
         exchange_info.currencies = currencies
         return exchange_info
 
+    def get_my_symbol_map(self):
+        my_symbol_map = call_sync(self.request_impl.get_symbols_by_usdt_btc_eth())
+        return my_symbol_map
+
     def get_best_quote(self, symbol: 'str') -> BestQuote:
         """
         Get the best bid and ask.
@@ -469,3 +473,4 @@ class RequestClient(object):
         :return: The margin loan account detail list.
         """
         return call_sync(self.request_impl.get_margin_balance_detail(symbol))
+

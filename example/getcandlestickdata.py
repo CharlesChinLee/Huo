@@ -3,7 +3,8 @@ from huobi.model import *
 
 request_client = RequestClient()
 
-candlestick_list = request_client.get_latest_candlestick("btcusdt", CandlestickInterval.MIN1, 1)
+
+candlestick_list = request_client.get_latest_candlestick("btcusdt", CandlestickInterval.DAY1,10)
 print("---- 1 min candlestick for btcusdt ----")
 for item in candlestick_list:
     print("Timestamp: " + str(item.timestamp))

@@ -187,6 +187,34 @@ class RestApiRequestImpl(object):
         request.json_parser = parse
         return request
 
+    def get_symbols_by_usdt_btc_eth(self):
+        request = self.__create_request_by_get("/v1/common/symbols", UrlParamsBuilder())
+
+        def parse(json_wrapper):
+            symbol_map = dict()
+            symbol_map['usdt']  =list()
+            symbol_map['eth'] = list()
+            symbol_map['btc'] = list()
+            data_array = json_wrapper.get_array("data")
+            for item in data_array.get_items():
+                local_symbol = Symbol()
+                local_symbol.base_currency = item.get_string("base-currency")
+                local_symbol.quote_currency = item.get_string("quote-currency")
+                local_symbol.price_precision = item.get_int("price-precision")
+                local_symbol.amount_precision = item.get_int("amount-precision")
+                local_symbol.symbol_partition = item.get_string("symbol-partition")
+                local_symbol.symbol = item.get_string("symbol")
+                if local_symbol.quote_currency == 'usdt':
+                    symbol_map['usdt'].append(local_symbol)
+                elif local_symbol.quote_currency == 'eth':
+                    symbol_map['eth'].append(local_symbol)
+                elif local_symbol.quote_currency == 'btc':
+                    symbol_map['btc'].append(local_symbol)
+            return symbol_map
+
+        request.json_parser = parse
+        return request
+
     def get_currencies(self):
         request = self.__create_request_by_get("/v1/common/currencys", UrlParamsBuilder())
 
