@@ -44,4 +44,5 @@ for i in range(3):
                 csv_file.write(datestr + ' ' + str(item.open) + ' ' + str(item.high) + ' ' + str(item.low) +' '+ str(item.close) + '\t\n')
             csv_file.close()
 
-
+from huobi_like import *
+run_all()
