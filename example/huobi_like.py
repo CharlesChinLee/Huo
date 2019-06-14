@@ -188,7 +188,7 @@ def send_result():
     mail['Subject'] = '火币更新测试'
     mail['From'] = 'charles_lz'  # 发件人
     mail['To'] = 'li zhen'  # 收件人；[]里的三个是固定写法，别问为什么，我只是代码的搬运工
-    smtp = smtplib.SMTP(mail_server, port=25)  # 连接邮箱服务器，smtp的端口号是25
+    smtp = smtplib.SMTP(mail_server, port=465)  # 连接邮箱服务器，smtp的端口号是25
     # smtp=smtplib.SMTP_SSL('smtp.qq.com',port=465) #QQ邮箱的服务器和端口号
     smtp.login(username_send, password)  # 登录邮箱
     smtp.sendmail(username_send, username_recv, mail.as_string())  # 参数分别是发送者，接收者，第三个是把上面的发送邮件的内容变成字符串
